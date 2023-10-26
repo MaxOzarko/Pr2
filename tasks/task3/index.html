@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozarko PI-20-02</title>
+</head>
+<body>
+    <p>Створіть ефект друкарської машинки, виводячи будь-яку заздалегідь заготовлену
+        фразу або попросивши користувача ввести її. Розв'яжіть задачу за допомогою
+        setInterval() та setTimeout().</p>
+        <input type="text" id="inputText" placeholder="Введіть фразу">
+        <button onclick="startPrinting()">Почати друк</button>
+        <p id="outputText"></p>
+    
+        <script>
+            let textToPrint = '';
+            let currentIndex = 0;
+            const outputElement = document.getElementById('outputText');
+    
+            function startPrinting() {
+                textToPrint = document.getElementById('inputText').value;
+                currentIndex = 0;
+                outputElement.textContent = ''; // Очистимо вміст перед початком друку
+                printText();
+            }
+    
+            function printText() {
+                if (currentIndex < textToPrint.length) {
+                    outputElement.textContent += textToPrint.charAt(currentIndex);
+                    currentIndex++;
+                    setTimeout(printText, 50); // Затримка між символами для ефекту друкарської машинки
+                }
+            }
+        </script>
+</body>
+</html>

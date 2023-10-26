@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozarko PI-20-02</title>
+</head>
+<body>
+    <p>2.4 Створіть веб-сторінку із часом, що змінюється кожні 30 секунд. При проходженні
+        30 секунд повинне видаватися попередження про оновлення часу на веб-сторінці.</p>
+        <p id="time">Початковий час</p>
+    
+        <script>
+            // Функція, яка оновлює час та виводить попередження
+            function updateClock() {
+                const timeElement = document.getElementById('time');
+    
+                // Оновлюємо час
+                const currentTime = new Date();
+                timeElement.textContent = `Поточний час: ${currentTime.toLocaleTimeString()}`;
+    
+                // Виводимо попередження через алерт
+                alert('Час був оновлений. Наступне оновлення через 30 секунд');
+    
+                // Встановлюємо таймер на оновлення кожні 30 секунд
+                setTimeout(updateClock, 30000);
+            }
+    
+            // Виклик функції оновлення при завантаженні сторінки
+            window.onload = updateClock;
+        </script>
+</body>
+</html>
